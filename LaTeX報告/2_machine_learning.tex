@@ -34,10 +34,9 @@ STL文件表示的表面是封閉並連接的三角形網格，其中每條邊�
 %=----------Softmax Function----------=%
 \item 四面體體積(圖.\ref{3D體積的計算})：\\
 在3D情況下，計算的基本單元為四面體，將原點與三角形的各個頂點連接形成一個四面體。三角形ACB具有法線NACB，由於原點 O 位於 NACB 的對面，因此
-這個四面體的值是正的，正負值也可以由內積 (OA \cdot NACB) 判斷。四面體體積為:\\
+這個四面體的值是正的，體積也可以由內積 (OA \cdot NACB) 判斷。四面體體積為:\\
 $$ V'_t = \frac{1}{6}(-x_i3 y_2i z_1i + x_2i y_3i z_1i + x_3i y_1i z_2i - x_1i y_3i z_2i - x_2i y_1i z_3i + x_1i y_2i z_3i) $$
 $$ V'_total= \sum_{i}V'_i$$
-
 
 \begin{figure}[hbt!]
 \begin{center}
@@ -46,12 +45,25 @@ $$ V'_total= \sum_{i}V'_i$$
 \end{center}
 \end{figure}
 %=----------Relu Function----------=%
-\item ReLU Function：\\
-ReLU Function方程式特性：若輸入值為負值，輸出值為0；若輸入值為正值，輸出則維持該輸入數值。ReLU計算方式簡單、收斂速度快，這是類神經網路最普遍拿來使用的啟動函數，因為可以解決梯度消散的問題，但須注意：起始值若設定到不易被激活範圍或是權重過渡所導致權重梯度為0就會造成神經元難以被激活。\\
+\item 矩和傅立葉轉換：\\
+計算的特徵可以寫為帶有作標總和的基礎特徵形狀，並且可以以顯式倒出基本形狀。雖然這是一個很大的約束，但是在內部空間上具有整合的形式都可以使用。\\
+ p, q, r 為力矩的階數，中心力矩可以從下列求解。\\
 \end{itemize}
-$$f(x)=max(0,x)$$
-$$if , x<0 , f(x)=0$$
-$$else f(x)=x$$
+$$M_pqr = \iiint x^{p} y^{q} z^{r} \rho (x,y,z) \,dx\,dy\,dz$$
+其中 ρ(x, y,z) 是指示函數：\\
+\begin{equation}
+\label{eq6}
+\rho (x,y,z) = \ieft\{
+\begin{aligned}
+1 & , & if (x,y,z) is inside the mesh
+0 & , &              otherwise
+\end{aligned}
+\right.
+\end{equation}
+由於積分可以重寫為每個基本形狀的積分之和：\\
+$$M_pqr = \sum_{i} S_i \iiint x^{p} y^{q} z^{r} \rho_i (x,y,z) \,dx\,dy\,dz$$
+
+
 \subsection{損失函數}
 損失函數是類神經網路的另一個重要的部分，損失函數會將類神經網絡的結果與期望結果進行比較，且必須重複估算模型當前狀態的誤差；該函數可用於估計模型的損失，以便可以更新權重減少下次評估時的損失，下一節會有詳細說明，以下簡述幾種優化的方法：\\
 \begin{itemize}
