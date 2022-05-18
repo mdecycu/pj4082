@@ -9,27 +9,14 @@
 \section{研究目的與方法}
 第一部分使用CoppeliaSim進行虛擬環境模擬3D列印過程，第二部分是將Arduino與CoppeliaSim連結，第三部分是使用comsol及Ansys做有限元素分析。\\
 
-透過簡化實體冰球機並導入虛擬環境，進行虛擬訓練，使用Gym的Pong當作對應的2D虛擬訓練環境，測試算法和訓練效果，篩選適合的算法與參數。\\
+簡化3D列印機，並使用XML格式導入虛擬環境，方便修改零件的坐標系及大小，加入GCode_interpreter及GCode，模擬3D列印。\\
 
 建置CoppilaSim模擬環境，嘗試將2D訓練概念套用到3D環境進行測試，加入電腦視覺與RemoteAPI，電腦視覺抓取球與擊錘的位置，透過RemoteAPI進行遠端控制，在3D環境測試算法可確保後續套用到實體機器上的可行性。\\
  
- 再透過架設伺服器與虛擬環境結合：讓虛擬環境的影像透過網伺服器串流影像供使用者遠端進行操控虛擬環境的擊錘進行打球，或是提供多人進行觀看對打影像。
-\begin{figure}[hbt!]
-\begin{center}
-\includegraphics[width=15cm]{研究架構}
-\caption{\Large 研究架構 }
-\label{研究架構 }
-\end{center}
-\end{figure}
+
 \section{未來展望}
 
-\section{規則說明}
- Pong game 的遊戲規則簡單，透過擊錘將球打入對方球門即得一分，只要其中一方得21分就結束該局。擊錘只能沿單方向來回移動來進行防守和進攻。\\
-遊戲規則如下：
-\begin{enumerate}
-\item 球打入敵方即得一分。
-\item 擊錘只單一方向移動。
-\item 最快贏得21分者獲勝，並結束該局遊戲。
-\end{enumerate}
+此次專題由構想到設計至模擬，模擬3D列印作為主軸深入到解決格式導入後產生的異位，並未了更擬真，在虛擬3D列印機中加入伺服馬達達到機電整合的設計，最後在進行模擬分析，找出其最佳化組合，希望未來可以進入到原形製造的部分。\\
+
 
 \renewcommand{\baselinestretch}{0.5} %設定行距

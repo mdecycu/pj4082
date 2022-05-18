@@ -33,9 +33,12 @@ STL文件表示的表面是封閉並連接的三角形網格，其中每條邊�
 \\
 %=----------Softmax Function----------=%
 \item 四面體體積(圖.\ref{3D體積的計算})：\\
-在3D情況下，計算的基本單元為四面體，將原點與三角形的各個頂點連接形成一個四面體。三角形ACB具有法線NACB，四面體體積為:\\
-$$\lvert V_OACB \rvert=\lvert \frac{1}{6}(-x_3 y_2 z_1 + x_2 y_3 z_1 + x_3 y_1 z_2 - x_1 y_3 z_2 - x_2 y_1 z_3 + x_1 y_2 z_3) \rvert$$
-得到的值大小為四面體體積，值的正負由檢察原點是否在同一側來確認三角形法線的相對方向。\\
+在3D情況下，計算的基本單元為四面體，將原點與三角形的各個頂點連接形成一個四面體。三角形ACB具有法線NACB，由於原點 O 位於 NACB 的對面，因此
+這個四面體的值是正的，正負值也可以由內積 (OA \cdot NACB) 判斷。四面體體積為:\\
+$$ V'_t = \frac{1}{6}(-x_i3 y_2i z_1i + x_2i y_3i z_1i + x_3i y_1i z_2i - x_1i y_3i z_2i - x_2i y_1i z_3i + x_1i y_2i z_3i) $$
+$$ V'_total= \sum_{i}V'_i$$
+
+
 \begin{figure}[hbt!]
 \begin{center}
 \includegraphics[width=16cm]{3D體積的計算}
