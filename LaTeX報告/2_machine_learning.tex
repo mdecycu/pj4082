@@ -17,37 +17,31 @@
 
  擠製成型的技術結構中，擠製頭大多藉由切層軟體轉換機械指令GCode來執行點座標的材料塗層路徑，其中提升Z軸升降的穩定性、熔絲擠出量的控制及環境溫度差異變引起的材料熱收縮皆會影響疊層精度的表現，目前都是以手動調整彈簧機構來維持平台角度但此方法無法有效解決平台本身弧形的高低差，而G92是透過安裝於效應器上的現為開關偵測，藉由現為開關的觸發機制，以利於傳回平台與每個Z軸座標點的高度資料，當訊號傳回去時，立即儲存該點位置高度，並採線性補差方式來獲得完整的水平成型面。\\
 
-\newpage
-\begin{figure}
-\begin{center}
-\includegraphics[width=16cm]{類神經網路關係}
-\caption{\Large 類神經網路關係}
-\label{類神經網路關係}
-\end{center}
-\end{figure}
-\subsection{啟動函數}
-啟動函數是設計類神經網路的關鍵部分，如果不使用啟動函數，神經元的計算只會有線性組合，這樣的類神經網路缺乏活性而且記憶性差；啟動函數能讓神經元計算呈現非線性，讓類神經網路因為計算的非線性而提高整個網路的活性和記憶性。\\
-以下介紹幾種較為常見的啟動函數及其特性：
+
+\subsection{導入虛擬場景}
+將CAD檔轉入虛擬環境時，可能會以不理想的座標系及大小進入到環境為了解決這個問題，採用STL檔轉換為XML檔，因為XML檔可以以說明資料的形式去傳送和攜帶資訊，透過改寫XML檔的方式可以控制轉入場景的物件的各項數值。\\
 \begin{itemize}
 %=----------Sigmoid      Function----------=%
-\item Sigmoid Function(圖.\ref{SigmoidFunction})：\\
-輸出介於0到1之間，適用於二元分類，方程式具有非線性、可連續微分、且具有固定輸出範圍等特性，並可以讓類神經網路呈現非線性。
-$$\sigma(x)=\frac{1}{1+e^{-x}}$$
-
-%=----------SigmoidPrime Function----------=%
-SigmoidPrime Function(圖.\ref{SigmoidFunction}，紅色的)是從Sigmoid Function(圖.\ref{SigmoidFunction}，藍色)微分得來，以梯度運算的方式，可以減少梯度誤差，但也是造成梯度消失的主要原因，若要改善梯度消失需要搭配優化器使用，方程式如下:\\
-$$\sigma^{'}(x)=\sigma(x)[1-\sigma(x)]$$
+\item 網格及法線的形成(圖.\ref{三角網格法線方向})：\\
+STL文件表示的表面是封閉並連接的三角形網格，其中每條邊都是兩個三角形的一部分，並且不相交。對於一個三角形，可以通過頂點的順序和右手定則來決定，如果公共邊有不同的方向，就可以證明兩個三角形的法線是一致的。\\
 \begin{figure}[hbt!]
 \begin{center}
-\includegraphics[width=16cm]{SigmoidFunction}
-\caption{\Large SigmoidFunction}\label{SigmoidFunction}
+\includegraphics[width=16cm]{三角網格法線方向}
+\caption{\Large 三角網格法線方向}\label{三角網格法線方向}
 \end{center}
 \end{figure}
 \\
 %=----------Softmax Function----------=%
-\item Softmax：\\
-Softmax會計算每個事件分布的機率，適用多項目分類、其機率總合為1。以此專案為例，假設擊錘移動有向上移動、向下移動及不移動這三個決策選項，則這三個決策機率值總和為1。\\
-$$S(x)=\frac{e^{x_i}}{\sum^k_{j=1}e^{x_i}}$$
+\item 四面體體積(圖.\ref{3D體積的計算})：\\
+在3D情況下，計算的基本單元為四面體，將原點與三角形的各個頂點連接形成一個四面體。三角形ACB具有法線NACB，四面體體積為:\\
+$$\lvert V_OACB \rvert=\lvert \frac{1}{6}(-x_3 y_2 z_1 + x_2 y_3 z_1 + x_3 y_1 z_2 - x_1 y_3 z_2 - x_2 y_1 z_3 + x_1 y_2 z_3) \rvert$$
+得到的值大小為四面體體積，值的正負由檢察原點是否在同一側來確認三角形法線的相對方向。\\
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=16cm]{3D體積的計算}
+\caption{\Large 3D體積的計算}\label{3D體積的計算}
+\end{center}
+\end{figure}
 %=----------Relu Function----------=%
 \item ReLU Function：\\
 ReLU Function方程式特性：若輸入值為負值，輸出值為0；若輸入值為正值，輸出則維持該輸入數值。ReLU計算方式簡單、收斂速度快，這是類神經網路最普遍拿來使用的啟動函數，因為可以解決梯度消散的問題，但須注意：起始值若設定到不易被激活範圍或是權重過渡所導致權重梯度為0就會造成神經元難以被激活。\\
