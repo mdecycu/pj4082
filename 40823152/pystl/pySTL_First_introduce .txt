@@ -1,0 +1,14 @@
+使用pySTL.py進行STL檔的座標轉換與位移
+參考:https://github.com/proverbialsunrise/pySTL 
+
+
+先進入pySTL.py檔裡，將101行的 fp=open(self.filename,'b')改成'rb'，可以讀取BINARY 與106行的if type=='solid': 改成b'solid' 使ASCLL能成功讀取
+
+若是沒有改pySTL.py 會出現UnicodeDecodeError: 'cp950' codec can't decode byte 0x80 in position 80: illegal multibyte sequence 錯誤。
+
+經上網查詢:https://stackoverflow.com/questions/42339876/error-unicodedecodeerror-utf-8-codec-cant-decode-byte-0xff-in-position-0-in 
+
+"with open(path, 'rb') as f:
+  contents = f.read()"
+  
+  rb可以讀取二進位檔案       

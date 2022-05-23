@@ -1,0 +1,31 @@
+1.	import pySTL
+
+	讀取stl檔的位置
+	model = pySTL.STLmodel('text.stl')
+
+2.	import numpy
+	往x軸移動10個單位
+	movement = numpy.array([10, 0, 0])
+	model.translate(movement)
+
+3.	模型縮小10%
+	scale = 0.1
+	model.scale(scale)
+
+4.	#轉動模型
+	#角度是徑度
+	R1 = pySTL.rotationAboutX(-3.14149/2)
+	R2 = pySTL.rotationAboutY(-3.14159/4)
+
+	R = R1.dot(R2)
+
+	model.rotate(R)
+
+5.	得到質心與體積
+	c = model.get_centroid()
+	v = model.get_volume()
+
+6.	產生新的STL檔
+	model.write_text_stl('newText.stl')
+
+
