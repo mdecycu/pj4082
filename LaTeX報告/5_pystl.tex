@@ -103,7 +103,7 @@ model = pySTL.STLmodel('uArm_binary.stl')
 
 \end{lstlisting}
 
-在這裡我們選擇的檔案是uArm_binary.stl檔案，並且可以先使用print，使我們可以先取得原本stl檔案的體積與質心數值。 (如:圖5.4)\\
+在這裡我們選擇的檔案是uArm\_binary.stl檔案，並且可以先使用print，使我們可以先取得原本stl檔案的體積與質心數值。 (如:圖5.4)\\
 
  \begin{lstlisting}[caption=\Large 數值]
 v = model.get_volume()
@@ -132,7 +132,7 @@ print ("Centroid1 " +  "X: " + str(c[0]) + " Y:" + str(c[1]) + "  Z:" + str(c[2]
 
 \end{lstlisting}
 
-因為stl檔案的單位mm，但是coppeliasim模擬的場景的單位是m，所以我們必須使用scale=0.001，使物體縮小1000倍在使用model.write_text_stl來產生檔案。(如圖:圖5.6)\\
+因為stl檔案的單位mm，但是coppeliasim模擬的場景的單位是m，所以我們必須使用scale=0.001，使物體縮小1000倍在使用model.write\_text\_stl來產生檔案。(如圖:圖5.6)\\
 
  \begin{lstlisting}[caption=\Large 縮小1000倍]
 #Scale the model down by 1000%
@@ -145,7 +145,7 @@ model.write_text_stl('uArm_scale_down_0.001.stl')
 
 \end{lstlisting}
 
-最後我們把生成好的uArm_scale_down_0.001stl放進coppeliasim場景裡面(圖5.7)我們可以發現uArm手臂的尺寸與方向都是正確的，無須再調整。\\
+最後我們把生成好的uArm\_scale\_down\_0.001stl放進coppeliasim場景裡面(圖5.7)我們可以發現uArm手臂的尺寸與方向都是正確的，無須再調整。\\
 
 \begin{figure}[hbt!]
 \begin{center}
