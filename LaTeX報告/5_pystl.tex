@@ -3,6 +3,7 @@
  
 
 \section{pySTL 功能}
+\begin{itemize}
 \item 打開text.stl檔案
 \begin{lstlisting}[caption=\Large 輸入檔案]
 import pySTL
@@ -38,6 +39,7 @@ model.scale(scale)
 
 \end{lstlisting}
 
+
 \item 質心顯示
  \begin{lstlisting}[caption=\Large 數值]
 c = model.get_centroid()
@@ -53,6 +55,7 @@ print(v)
 \end{lstlisting}
 
 \item 產生newText.stl檔案
+\end{itemize}
  \begin{lstlisting}[caption=\Large 產生新stl檔案]
 model.write_text_stl('newText.stl')
 \end{lstlisting}
@@ -162,7 +165,7 @@ model.write_text_stl('uArm_scale_down_0.001.stl')
 \end{center}
 \end{figure}
 
-\item pySTL.py程式流程
+\subsection{pySTL.py程式流程} 
 (圖:5.9)我們讀取STL會先判斷各個種類的STL檔案，分別使用不同的方法去讀取檔案，當可以成功讀取檔案時，我們即可以使用ASCII的規格來寫入進去(solid	表面對法線	三維三角形頂點)，即可產生ASCII STL檔案。\\
 
     我們使用每個三角形的頂點與原點形成一個四面體，計算每個模型體積用於得到三維形狀的質心(使用第6章的理論來求解)，即可得用於物體的移動、轉動與縮放。\\
