@@ -66,7 +66,7 @@ model.write_text_stl('newText.stl')
 
 \begin{figure}[hbt!]
 \begin{center}
-\includegraphics[scale=0.74]{正常轉檔流程}
+\includegraphics[scale=1]{正常轉檔流程}
 \caption{\Large 正常轉檔流程}\label{正常轉檔流程}
 \end{center}
 \end{figure}
@@ -75,7 +75,7 @@ model.write_text_stl('newText.stl')
 
 \begin{figure}[hbt!]
 \begin{center}
-\includegraphics[scale=0.74]{pystl轉檔流程}
+\includegraphics[scale=1]{pystl轉檔流程}
 \caption{\Large pystl轉檔流程}\label{pystl轉檔流程}
 \end{center}
 \end{figure}
@@ -84,7 +84,7 @@ model.write_text_stl('newText.stl')
 因為pySTL是一個開源套件，所以我們先在github 裡git clone pySTL整個資料夾下載出來。(如:圖5.3)
 \begin{figure}[hbt!]
 \begin{center}
-\includegraphics[scale=0.74]{clone pySTL}
+\includegraphics[scale=1]{clone pySTL}
 \caption{\Large clone pySTL}\label{clone pySTL}
 \end{center}
 \end{figure}
@@ -103,7 +103,7 @@ model = pySTL.STLmodel('uArm_binary.stl')
 
 \end{lstlisting}
 
-在這裡我們選擇的檔案是uArm\_binary.stl檔案，並且可以先使用print，使我們可以先取得原本stl檔案的體積與質心數值。 (如:圖5.4)\\
+在這裡我們選擇的檔案是uArm\_binary.stl檔案，並且可以先使用print，使我們可以先取得原本stl檔案的體積與質心數值。 \\
 
  \begin{lstlisting}[caption=\Large 數值]
 v = model.get_volume()
@@ -114,12 +114,12 @@ print(v)
 
 \begin{figure}[hbt!]
 \begin{center}
-\includegraphics[scale=0.74]{ 體積與質心數值顯示}
+\includegraphics[scale=1]{ 體積與質心數值顯示}
 \caption{\Large 體積與質心數值顯示}\label{ 體積與質心數值顯示}
 \end{center}
 \end{figure}
 
-我們輸入pySTL.rotationAboutX(-3.14159/2)(如圖:圖5.5)，使物體能夠向x軸轉動90度，這裡需要注意的點是，角度的單位是徑度。\\
+我們輸入pySTL.rotationAboutX(-3.14159/2)，使物體能夠向x軸轉動90度，這裡需要注意的點是，角度的單位是徑度。\\
 
  \begin{lstlisting}[caption=\Large 向X軸轉90度]
 #Rotate the model 90 degrees about the X-axis
@@ -132,7 +132,7 @@ print ("Centroid1 " +  "X: " + str(c[0]) + " Y:" + str(c[1]) + "  Z:" + str(c[2]
 
 \end{lstlisting}
 
-因為stl檔案的單位mm，但是coppeliasim模擬的場景的單位是m，所以我們必須使用scale=0.001，使物體縮小1000倍在使用model.write\_text\_stl來產生檔案。(如圖:圖5.6)\\
+因為stl檔案的單位mm，但是coppeliasim模擬的場景的單位是m，所以我們必須使用scale=0.001，使物體縮小1000倍在使用model.write\_text\_stl來產生檔案。(如圖:圖5.3)\\
 
  \begin{lstlisting}[caption=\Large 縮小1000倍]
 #Scale the model down by 1000%
@@ -145,34 +145,34 @@ model.write_text_stl('uArm_scale_down_0.001.stl')
 
 \end{lstlisting}
 
-最後我們把生成好的uArm\_scale\_down\_0.001stl放進coppeliasim場景裡面(圖5.7)我們可以發現uArm手臂的尺寸與方向都是正確的，無須再調整。\\
+最後我們把生成好的uArm\_scale\_down\_0.001stl放進coppeliasim場景裡面(圖5.4)我們可以發現uArm手臂的尺寸與方向都是正確的，無須再調整。\\
 
 \begin{figure}[hbt!]
 \begin{center}
-\includegraphics[scale=0.74]{uArm scale down coppeliasim}
+\includegraphics[scale=1]{uArm scale down coppeliasim}
 \caption{\Large uArm scale down coppeliasim}\label{uArm scale down coppeliasim}
 \end{center}
 \end{figure}
 
 \section{程式流程}
 
-首先我們執行sample.py的啟動檔，導入pySTL模組，即可讀取STL檔案，得知物體體積與質心數值後，輸入想要的物體位置與比例縮放，來達成最終理想的STL檔案。(圖:5.8)\\
+首先我們執行sample.py的啟動檔，導入pySTL模組，即可讀取STL檔案，得知物體體積與質心數值後，輸入想要的物體位置與比例縮放，來達成最終理想的STL檔案。(圖:5.5)\\
 
 \begin{figure}[hbt!]
 \begin{center}
-\includegraphics[scale=0.74]{sample.py程式流程}
+\includegraphics[scale=1]{sample.py程式流程}
 \caption{\Large sample.py程式流程}\label{sample.py程式流程}
 \end{center}
 \end{figure}
 
 \subsection{pySTL.py程式流程} 
-(圖:5.9)我們讀取STL會先判斷各個種類的STL檔案，分別使用不同的方法去讀取檔案，當可以成功讀取檔案時，我們即可以使用ASCII的規格來寫入進去(solid	表面對法線	三維三角形頂點)，即可產生ASCII STL檔案。\\
+(圖:5.6)我們讀取STL會先判斷各個種類的STL檔案，分別使用不同的方法去讀取檔案，當可以成功讀取檔案時，我們即可以使用ASCII的規格來寫入進去(solid	表面對法線	三維三角形頂點)，即可產生ASCII STL檔案。\\
 
     我們使用每個三角形的頂點與原點形成一個四面體，計算每個模型體積用於得到三維形狀的質心(使用第6章的理論來求解)，即可得用於物體的移動、轉動與縮放。\\
 
 \begin{figure}[hbt!]
 \begin{center}
-\includegraphics[scale=0.74]{pySTL.py程式流程}
+\includegraphics[scale=1]{pySTL.py程式流程}
 \caption{\Large pySTL.py程式流程}\label{pySTL.py程式流程}
 \end{center}
 \end{figure}
