@@ -1,6 +1,11 @@
 \chapter{虛擬環境}
 %\renewcommand{\baselinestretch}{10.0} %設定行距
 
+虛擬實境是智慧製造中重要的應用技術之一，利用此技術可以快速驗證產品的製造過程，提前發現潛在的問題，達到縮短產品上市的時間和降低生產成本的目的。\\
+
+\section{原理介紹}
+
+虛擬機器（英語：virtual machine），在電腦科學中的體系結構裡，是指一種特殊的軟體，可以在電腦平台和終端使用者之間建立一種環境，而終端使用者則是基於虛擬機器這個軟體所建立的環境來操作其它軟體。虛擬機器（VM）是電腦系統的仿真器，通過軟體類比具有完整硬體系統功能的、執行在一個完全隔離環境中的完整電腦系統，能提供物理電腦的功能。
 
 \section{CoppeliaSim 場景}
  CoppeliaSim是一套具有整合開發環境的機器人模擬軟體，基於分佈式控制體系架構，可以利用寫入嵌入式腳本、插件、ROS、BlueZero節點、RemoteAPI客戶端或自定義解決方案達成模型控制之效果。\\
@@ -75,15 +80,23 @@
 \section{模擬流程}
 
 \subsection{使用Inventor繪製uArm零件}
- 模擬的第一步是先將設計後的uArm零件使用Inventor繪製出來後，再將其轉為Cura程式可接受的STL檔案格式。\\
+ 模擬的第一步是先將更改後的uArm零件使用Inventor繪製出來，因為Cura能夠辨識出STL、OBJ或是3MF這些文件格式，所以這裡將檔案轉為STL的Binary格式，之後使用Cura將STL做切片並且產生uArm零件的G-code程式。\\
 \begin{figure}[hbt!]
 \begin{center}
 \includegraphics[width=8cm]{Inventor1}
 \caption{\Large 使用Inventor繪製零件}\label{Inventor1}
 \end{center}
 \end{figure}
+
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=8cm]{Inventor Binary format}
+\caption{\Large 選擇Binary格式}\label{Inventor Binary format}
+\end{center}
+\end{figure}
+
 \subsection{使用Cura轉出G-Code檔}
- 第二步將把上一步轉出的STL檔案轉入Cura程式中，可將零件們進行排列或旋轉方向放置到最佳的列印位置，進行切片後，轉出所需的G-Code檔案。\\
+ 第二步將把上述步驟中的STL檔案匯入到Cura程式中，Cura可以將STL檔進行矩陣排列或旋轉方向，並將STL檔放置到最佳的列印位置後，使用Cura將uArm進行切片，把uArm的STL格式轉換成的G-Code檔案，這裡因為要讓3D Print中的控制器與伺服馬達產生溝同橋梁的程式代碼G-code，所以要將STL檔轉換成機器看得懂的G-code格式，這裡的G-code是要由切層軟體Cura生成。\\
 \begin{figure}[hbt!]
 \begin{center}
 \includegraphics[width=14cm]{Cura}
