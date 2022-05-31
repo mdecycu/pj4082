@@ -5,7 +5,7 @@
 
 \section{原理介紹}
 
-虛擬機器（英語：virtual machine），在電腦科學中的體系結構裡，是指一種特殊的軟體，可以在電腦平台和終端使用者之間建立一種環境，而終端使用者則是基於虛擬機器這個軟體所建立的環境來操作其它軟體。虛擬機器（VM）是電腦系統的仿真器，通過軟體類比具有完整硬體系統功能的、執行在一個完全隔離環境中的完整電腦系統，能提供物理電腦的功能。\\
+虛擬機器（英語：virtual machine），在電腦科學中的體系結構裡，是指一種特殊的軟體，可以在電腦平台和終端使用者之間建立一種環境，而終端使用者則是基於虛擬機器這個軟體所建立的環境來操作其它軟體。虛擬機器（VM）是電腦系統的仿真器，通過軟體類比具有完整硬體系統功能的、執行在一個完全隔離環境中的完整電腦系統，能提供物理電腦的功能。
 
 \section{CoppeliaSim 場景}
  CoppeliaSim是一套具有整合開發環境的機器人模擬軟體，基於分佈式控制體系架構，可以利用寫入嵌入式腳本、插件、ROS、BlueZero節點、RemoteAPI客戶端或自定義解決方案達成模型控制之效果。\\
@@ -75,15 +75,19 @@
 \label{組合圖}
 \end{figure}
 
+\section{虛擬uArm機械手臂}
 
+uArm是世界上第一個開源的桌上型機械手臂，他擁有開源的硬體以及軟體設備，此外uArm是可以根據自己的需求去開發以及擴展uArm的功能，正因為uArm有著這些亮眼的特點，所以uArm是很適合做為我們這次在虛實整合開發的一樣工具。\\
 \section{模擬流程}
 
-%\begin{figure}[hbt!]
-%\begin{center}
-%\includegraphics[width=8cm]{虛擬環境的流程圖}
-%\caption{\Large 流程圖}\label{虛擬環境的流程圖}
-%\end{center}
-%\end{figure}
+以下流程圖為現階段可做的部分以及預計未來可做到的流程。\\
+
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=8cm]{虛擬環境的流程圖}
+\caption{\Large 流程圖}\label{虛擬環境的流程圖}
+\end{center}
+\end{figure}
 
 \subsection{使用Inventor繪製uArm零件}
  模擬的第一步是先將更改後的uArm零件使用Inventor繪製出來，因為Cura能夠辨識出STL、OBJ或是3MF這些文件格式，所以這裡將檔案轉為STL的Binary格式，之後使用Cura將STL做切片並且產生uArm零件的G-code程式。\\
@@ -108,14 +112,14 @@
 \end{center}
 \end{figure}
 \subsection{更改G-Code檔}
- 由於此列印模組之Z軸與本專題之3D列印機恰好相反，因此需修改有關的Z軸代碼後的數值為負值，還有一處需要修改，那就是擠出率的代碼，列印模組中擠出率代碼為A，但從Cura中轉出的G-Code中擠出率代碼為E，所以需將G-Code中的代碼E更改為A。\\
+ 由於此列印模組之Z軸與本專題之3D列印機恰好相反，因此需修改有關的Z軸代碼後的數值為負值，還有一處需要修改，那就是擠出率的代碼，列印模組中擠出率代碼為A，但從Cura中轉出的G-Code中擠出率代碼為E，所以需將G-Code中的代碼E更改為A。
 \begin{figure}[hbt!]
 \begin{center}
 \includegraphics[width=14cm]{修改GCODE}
 \caption{\Large 修改G-Code部分代碼}\label{修改GCODE}
 \end{center}
 \end{figure}
-\subsection{將G-Code轉入GCodeInterpreter}
+\\subsection{將G-Code轉入GCodeInterpreter}
  第四步將修改好的G-Code檔案轉入GCodeInterpreter，按下連接鍵與CoppeliaSim連接後，進行模擬。\\
 \begin{figure}[hbt!]
 \begin{center}
@@ -123,7 +127,7 @@
 \caption{\Large 模擬中的GCodeInterpreter畫面}\label{GCodeInterpreter}
 \end{center}
 \end{figure}
-\subsection{uArm零件模擬列印結果}
+\\subsection{uArm零件模擬列印結果}
  在CoppeliaSim模擬設定視窗中可以調整擠出材料的大小以及形狀(圓球或方塊)，與GCodeInterpreter連接後，當GCodeInterpreter按下運行鍵後，開始列印模擬，在CoppeliaSim中也可以進行模擬列印整體速度調整，更加省時，下圖為模擬結果。\\
 \begin{figure}[hbt!]
 \begin{center}
