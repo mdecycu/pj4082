@@ -104,7 +104,7 @@ model = pySTL.STLmodel('uArm_binary.stl')
 
 \end{lstlisting}
 
-在這裡我們選擇的檔案是uArm\_binary.stl檔案，並且可以先使用print，使我們可以先取得原本stl檔案的體積與質心數值。 \\
+在這裡我們選擇的檔案是uArm\_binary.stl檔案，並且可以先使用print，使我們可以先取得原本stl檔案的體積與質心數值。(圖:5.4) \\
 
  \begin{lstlisting}[caption=\Large 數值]
 v = model.get_volume()
@@ -133,7 +133,7 @@ print ("Centroid1 " +  "X: " + str(c[0]) + " Y:" + str(c[1]) + "  Z:" + str(c[2]
 
 \end{lstlisting}
 
-因為stl檔案的單位mm，但是coppeliasim模擬的場景的單位是m，所以我們必須使用scale=0.001，使物體縮小1000倍在使用model.write\_text\_stl來產生檔案。(如圖:圖5.3)\\
+因為stl檔案的單位mm，但是coppeliasim模擬的場景的單位是m，所以我們必須使用scale=0.001，使物體縮小1000倍在使用model.write\_text\_stl來產生檔案。(如圖:圖5.5)\\
 
  \begin{lstlisting}[caption=\Large 縮小1000倍]
 #Scale the model down by 1000%
@@ -157,7 +157,7 @@ model.write_text_stl('uArm_scale_down_0.001.stl')
 
 \section{程式流程}
 
-首先我們執行sample.py的啟動檔，導入pySTL模組，即可讀取STL檔案，得知物體體積與質心數值後，輸入想要的物體位置與比例縮放，來達成最終理想的STL檔案。(圖:5.5)\\
+首先我們執行sample.py的啟動檔，導入pySTL模組，即可讀取STL檔案，得知物體體積與質心數值後，輸入想要的物體位置與比例縮放，來達成最終理想的STL檔案。(圖:5.6)\\
 
 \begin{figure}[hbt!]
 \begin{center}
@@ -167,7 +167,7 @@ model.write_text_stl('uArm_scale_down_0.001.stl')
 \end{figure}
 
 \subsection{pySTL.py程式流程} 
-(圖:5.6)我們讀取STL會先判斷各個種類的STL檔案，分別使用不同的方法去讀取檔案，當可以成功讀取檔案時，我們即可以使用ASCII的規格來寫入進去(solid-表面對法線-三維三角形頂點)，即可產生ASCII STL檔案。\\
+(圖:5.7)我們讀取STL會先判斷各個種類的STL檔案，分別使用不同的方法去讀取檔案，當可以成功讀取檔案時，我們即可以使用ASCII的規格來寫入進去(solid-表面對法線-三維三角形頂點)，即可產生ASCII STL檔案。\\
 
     我們使用每個三角形的頂點與原點形成一個四面體，計算每個模型體積用於得到三維形狀的質心(使用第6章的理論來求解)，即可得用於物體的移動、轉動與縮放。\\
 
