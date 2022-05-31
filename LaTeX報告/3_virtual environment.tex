@@ -122,6 +122,7 @@
 
 \subsection{uArm零件模擬列印結果}
  在CoppeliaSim模擬設定視窗中可以調整擠出材料的大小以及形狀(圓球或方塊)，與GCodeInterpreter連接後，當GCodeInterpreter按下運行鍵後，開始列印模擬，在CoppeliaSim中也可以進行模擬列印整體速度調整，更加省時，下圖為模擬結果。\\
+\clearpage
 \begin{figure}[htb]
 \begin{center}
 \includegraphics[width=14cm]{simulation}
@@ -132,38 +133,38 @@
 \caption{\Large 列印選項控制 UI介面}\label{UIP}
 \end{center}
 \end{figure}
-
+\clearpage
 \subsection{在CoppeliaSim匯入uArm零件進行模擬}
  將uArm的STL檔匯入CoppeliaSim中將零件進行拆解並簡化，接著是各軸的組配，最後搭配CoppeliaSim的UI進行三個馬達軸的控制。\\
-
 \subsection{簡化模型}
  所謂的簡化係指將uArm STL檔轉進CoppeliaSim拆解後，進入Toggle shape edit mode(三角形編輯模式)針對各零件的三角網格進行選擇後，從複雜形狀的零件簡化提取出方塊、圓柱或圓球等等的簡單形狀，用於模擬運算，外觀可套上原零件保持原樣，另一方式為使用add選單中的Convex decomposition of selection(凸分解)，Convex Hull(凸包)可以理解在高維空間中有一群散佈各處的點，「凸包」是包覆這群點的所有外殼當中，表面積暨容積最小的一個外殼，而最小的外殼一定是凸的。而凸分解就是將零件依據三角網格的頂點分解成數個凸包再進行組合，在運算效率上來說使用Toggle shape edit mode(三角形編輯模式)方式可獲得較好的效果。\\
-
 \begin{figure}[htb]
 \begin{center}
 \includegraphics[width=2cm]{TSEM}
 \caption{\Large Toggle shape edit mode(三角形編輯模式)}\label{TSEM}
 \end{center}
+\end{figure}
+\begin{figure}[htb]
 \begin{center}
-\includegraphics[width=10cm]{ConvexHull1}
+\includegraphics[width=8cm]{ConvexHull1}
 \caption{\Large Convex Hull(凸包)}\label{ConvexHull1}
 \end{center}
 \end{figure}
-
+\clearpage
 \subsection{模擬}
  一開始使用官方圖檔進行模擬，花費許多組配時間在簡化零件之上，所以決定使用自行繪製的簡化圖檔進行模擬，簡化圖檔保留了主要的零件，設計後的零件大部分為利於列印的薄板件。\\
  
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=14cm]{uArm01}
+\includegraphics[width=12cm]{uArm01}
 \caption{\Large 原版的uArm手臂模擬}\label{uArm01}
 \end{center}
 \begin{center}
-\includegraphics[width=14cm]{uArm02}
+\includegraphics[width=12cm]{uArm02}
 \caption{\Large 設計過後的uArm手臂模擬}\label{uArm02}
 \end{center}
 \begin{center}
-\includegraphics[width=12cm]{UI}
+\includegraphics[width=8cm]{UI}
 \caption{\Large 用於控制3個馬達軸的UI介面}\label{UI}
 \end{center}
 \end{figure}
