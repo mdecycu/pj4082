@@ -32,7 +32,7 @@ model.rotate(R)
 
 \end{lstlisting}
 
-\item 物體縮小10%
+\item 物體縮小10倍
  \begin{lstlisting}[caption=\Large 縮放]
 scale = 0.1
 model.scale(scale)
@@ -129,7 +129,8 @@ R2 = pySTL.rotationAboutX(-3.14159/2)
 model.rotate(R2)
 
 c = model.get_centroid()
-print ("Centroid1 " +  "X: " + str(c[0]) + " Y:" + str(c[1]) + "  Z:" + str(c[2]))
+print ("Centroid1 " +  "X: " + str(c[0]) + " Y:" + str(c[1]) + 
+         "  Z:" + str(c[2]))
 
 \end{lstlisting}
 
@@ -141,7 +142,8 @@ scale = 0.001
 model.scale(scale)
 
 c = model.get_centroid()
-print ("Centroid2 " +  "X: " + str(c[0]) + " Y:" + str(c[1]) + "  Z:" + str(c[2]))
+print ("Centroid2 " +  "X: " + str(c[0]) + " Y:" + str(c[1]) +
+         "  Z:" + str(c[2]))
 model.write_text_stl('uArm_scale_down_0.001.stl')
 
 \end{lstlisting}
@@ -173,7 +175,7 @@ model.write_text_stl('uArm_scale_down_0.001.stl')
 
 \begin{figure}[hbt!]
 \begin{center}
-\includegraphics[width=18cm]{pySTL.py程式流程}
+\includegraphics[width=14cm]{pySTL.py程式流程}
 \caption{\Large pySTL.py程式流程}\label{pySTL.py程式流程}
 \end{center}
 \end{figure}
